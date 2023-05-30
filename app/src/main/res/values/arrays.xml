@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--编码参数设置-->
+    <!--编码个数-->
+    <string-array name="record_number">
+        <item>无</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>12</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+    <!--编码分辨率-->
+    <string-array name="record_resolution">
+        <item>720P</item>
+        <item>1080P</item>
+        <item>2K</item>
+        <item>4K</item>
+        <item>2560x1440</item>
+        <item>8k</item>
+    </string-array>
+    <!--编码格式-->
+    <string-array name="encode_format">
+        <item>H264</item>
+        <!--        <item>H266</item>-->
+        <!--        <item>H268</item>-->
+        <!--        <item>H270</item>-->
+        <!--        <item>H272</item>-->
+    </string-array>
+    <!--主码率-->
+    <string-array name="main_rate">
+        <item>2M</item>
+        <item>4M</item>
+        <item>6M</item>
+        <item>8M</item>
+        <item>10M</item>
+    </string-array>
+    <!--文件格式-->
+    <string-array name="file_format">
+        <item>MP4</item>
+        <item>WMV</item>
+        <item>MKV</item>
+        <item>AVI</item>
+        <item>FLV</item>
+    </string-array>
+    <!--子码率-->
+    <string-array name="sub_rate">
+        <item>2M</item>
+        <item>4M</item>
+        <item>6M</item>
+        <item>8M</item>
+        <item>10M</item>
+    </string-array>
+    <!--码流分辨率-->
+    <string-array name="stream_resolution">
+        <item>720P</item>
+        <item>1080P</item>
+        <item>2K</item>
+        <item>4K</item>
+    </string-array>
+    <!--文件大小-->
+    <string-array name="file_size">
+        <item>50M</item>
+        <item>100M</item>
+        <item>200M</item>
+    </string-array>
+    <!--解码参数设置-->
+    <string-array name="decode_number">
+        <item>无</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>12</item>
+        <item>16</item>
+    </string-array>
+    <!--录像分辨率-->
+    <string-array name="decode_resolution">
+        <item>720P</item>
+        <item>1080P</item>
+        <item>2k</item>
+        <item>4K</item>
+    </string-array>
+    <!--编码格式-->
+    <string-array name="decode_format">
+        <item>H264</item>
+        <!--        <item>H266</item>-->
+        <!--        <item>H268</item>-->
+        <!--        <item>H270</item>-->
+        <!--        <item>H272</item>-->
+    </string-array>
+    <string-array name="encode_frameRate">
+        <item>30</item>
+        <item>60</item>
+        <item>80</item>
+        <item>100</item>
+        <item>120</item>
+        <item>180</item>
+        <item>200</item>
+        <item>240</item>
+        <item>480</item>
+    </string-array>
+    <string-array name="codec_type">
+        <item>编码</item>
+        <item>解码</item>
+    </string-array>
+</resources>

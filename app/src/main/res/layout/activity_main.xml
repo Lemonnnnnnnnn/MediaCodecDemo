@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".biz.MainActivity"
+    tools:ignore="ExtraText">
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/record_title"
+        style="@style/titleTextStyle"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="编码参数设置："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/record_num_text"
+        style="@style/contentTextStyle"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="编码个数"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/record_title" />
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/record_num_spinner"
+        style="@style/spinnerStyle"
+        app:layout_constraintLeft_toRightOf="@id/record_num_text"
+        app:layout_constraintTop_toTopOf="@id/record_num_text" />
+
+    <TextView
+
+        android:id="@+id/encode_format_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="30dp"
+        android:text="编码格式"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/record_num_text"
+        app:layout_constraintTop_toBottomOf="@id/record_num_text" />
+
+    <Spinner
+        android:id="@+id/encode_format_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/encode_format_text"
+        app:layout_constraintTop_toTopOf="@id/encode_format_text" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/record_resolution_text"
+        style="@style/contentTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="编码分辨率"
+        app:layout_constraintLeft_toRightOf="@id/record_num_spinner"
+        app:layout_constraintTop_toTopOf="@id/record_num_spinner" />
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/record_resolution_spinner"
+        style="@style/spinnerStyle"
+        app:layout_constraintLeft_toRightOf="@id/record_resolution_text"
+        app:layout_constraintTop_toTopOf="@id/record_resolution_text" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/framerate_text"
+        style="@style/contentTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="编码帧率"
+        app:layout_constraintLeft_toRightOf="@id/record_resolution_spinner"
+        app:layout_constraintTop_toTopOf="@id/record_resolution_spinner" />
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/framerate_spinner"
+        style="@style/spinnerStyle"
+        app:layout_constraintLeft_toRightOf="@id/framerate_text"
+        app:layout_constraintTop_toTopOf="@id/framerate_text" />
+    <TextView
+        android:id="@+id/main_rate_text"
+        style="@style/contentTextStyle"
+        android:text="主码率"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/record_resolution_text"
+        app:layout_constraintTop_toTopOf="@id/encode_format_text" />
+
+    <Spinner
+        android:id="@+id/main_rate_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/main_rate_text"
+        app:layout_constraintTop_toTopOf="@id/main_rate_text" />
+
+    <TextView
+        android:id="@+id/file_format_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="30dp"
+        android:text="文件格式"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/encode_format_text"
+        app:layout_constraintTop_toBottomOf="@id/encode_format_text" />
+
+    <Spinner
+        android:id="@+id/file_format_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/file_format_text"
+        app:layout_constraintTop_toTopOf="@id/file_format_text" />
+
+    <TextView
+        android:id="@+id/sub_rate_text"
+        style="@style/contentTextStyle"
+        android:text="子码率"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/record_resolution_text"
+        app:layout_constraintTop_toTopOf="@id/file_format_text" />
+
+    <Spinner
+        android:id="@+id/sub_rate_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/sub_rate_text"
+        app:layout_constraintTop_toTopOf="@id/sub_rate_text" />
+
+    <TextView
+        android:id="@+id/stream_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="30dp"
+        android:text="子码流"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/encode_format_text"
+        app:layout_constraintTop_toBottomOf="@id/file_format_text" />
+
+    <Switch
+        android:id="@+id/stream_switch"
+        style="@style/switchStyle"
+        android:layout_marginStart="20dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/stream_text"
+        app:layout_constraintTop_toTopOf="@id/stream_text" />
+
+    <TextView
+        android:id="@+id/stream_resolution_text"
+        style="@style/contentTextStyle"
+        android:text="分辨率"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/record_resolution_text"
+        app:layout_constraintTop_toTopOf="@id/stream_text" />
+
+    <Spinner
+        android:id="@+id/stream_resolution_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/stream_resolution_text"
+        app:layout_constraintTop_toTopOf="@id/stream_resolution_text" />
+
+    <TextView
+        android:id="@+id/file_size_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="30dp"
+        android:text="文件大小"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/encode_format_text"
+        app:layout_constraintTop_toBottomOf="@id/stream_text" />
+
+    <Spinner
+        android:id="@+id/file_size_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/file_size_text"
+        app:layout_constraintTop_toTopOf="@id/file_size_text" />
+
+    <TextView
+        android:id="@+id/audio_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="30dp"
+        android:text="音频"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/record_resolution_text"
+        app:layout_constraintTop_toBottomOf="@id/stream_resolution_text" />
+
+    <Switch
+        android:id="@+id/audio_switch"
+        style="@style/switchStyle"
+        android:layout_marginStart="20dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/audio_text"
+        app:layout_constraintTop_toTopOf="@id/audio_text" />
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/decode_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorGrey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/file_size_text" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/decode_title"
+        style="@style/titleTextStyle"
+        android:layout_marginTop="10dp"
+        android:text="解码参数设置："
+        app:layout_constraintLeft_toLeftOf="@id/record_num_text"
+        app:layout_constraintTop_toBottomOf="@id/decode_divider" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/decode_num_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="20dp"
+        android:text="解码个数"
+        app:layout_constraintLeft_toLeftOf="@id/decode_title"
+        app:layout_constraintTop_toBottomOf="@id/decode_title" />
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/decode_num_spinner"
+        style="@style/spinnerStyle"
+        app:layout_constraintLeft_toRightOf="@id/decode_num_text"
+        app:layout_constraintTop_toTopOf="@id/decode_num_text" />
+
+    <TextView
+        android:id="@+id/decode_format_text"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="30dp"
+        android:text="解码格式"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/decode_num_text"
+        app:layout_constraintTop_toBottomOf="@id/decode_num_text" />
+
+    <Spinner
+        android:id="@+id/decode_format_spinner"
+        style="@style/spinnerStyle"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/decode_format_text"
+        app:layout_constraintTop_toTopOf="@id/decode_format_text" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/decode_resolution_text"
+        style="@style/contentTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解码分辨率"
+        app:layout_constraintLeft_toRightOf="@id/decode_num_spinner"
+        app:layout_constraintTop_toTopOf="@id/decode_num_spinner" />
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/decode_resolution_spinner"
+        style="@style/spinnerStyle"
+        app:layout_constraintLeft_toRightOf="@id/decode_resolution_text"
+        app:layout_constraintTop_toTopOf="@id/decode_resolution_text" />
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/decode_framerate_text"
+        style="@style/contentTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="解码帧率"
+        app:layout_constraintLeft_toRightOf="@id/decode_resolution_spinner"
+        app:layout_constraintTop_toTopOf="@id/decode_resolution_spinner" />
+
+    <Spinner
+        android:visibility="gone"
+        android:id="@+id/decode_framerate_spinner"
+        style="@style/spinnerStyle"
+        app:layout_constraintLeft_toRightOf="@id/decode_framerate_text"
+        app:layout_constraintTop_toTopOf="@id/decode_framerate_text" />
+
+    <LinearLayout
+        android:id="@+id/ll_add"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/add"
+            android:src="@mipmap/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/delete"
+            android:src="@mipmap/delete"
+            android:layout_marginLeft="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <TextView
+        android:text="长按单个数据可以删除哦"
+        android:textColor="@android:color/black"
+        android:textSize="10sp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/ll_add"
+        app:layout_constraintEnd_toStartOf="@+id/ll_add"
+        app:layout_constraintBottom_toBottomOf="@+id/ll_add"/>
+
+    <com.ethan.mediacodecdemo.util.ListViewForScrollView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_add"/>
+    <View
+        android:id="@+id/output_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorGrey"
+        app:layout_constraintLeft_toLeftOf="@id/list_item"
+        app:layout_constraintTop_toBottomOf="@id/list_item" />
+
+
+    <TextView
+        android:id="@+id/output_title_text"
+        style="@style/titleTextStyle"
+        android:layout_marginTop="10dp"
+        android:text="结果输出:"
+        app:layout_constraintLeft_toLeftOf="@id/record_num_text"
+        app:layout_constraintTop_toBottomOf="@id/output_divider" />
+
+    <TextView
+        android:id="@+id/output_fps_title"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="10dp"
+        android:text="帧率"
+        app:layout_constraintLeft_toLeftOf="@id/output_title_text"
+        app:layout_constraintTop_toBottomOf="@id/output_title_text" />
+
+    <TextView
+        android:id="@+id/processing_text"
+        style="@style/contentTextStyle"
+        android:layout_marginStart="10dp"
+        app:layout_constraintLeft_toRightOf="@id/output_fps_title"
+        app:layout_constraintTop_toTopOf="@id/output_fps_title" />
+
+    <com.ethan.mediacodecdemo.util.LoadingUtil
+        android:id="@+id/processing_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="10dp"
+        android:minWidth="5dp"
+        android:textColor="@color/colorDark"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/processing_text"
+        app:layout_constraintLeft_toRightOf="@id/processing_text" />
+
+    <LinearLayout
+        android:id="@+id/ll_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/output_fps_title">
+        <TextView
+            android:id="@+id/output_fps_content"
+            style="@style/contentTextStyle"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/decode_output_fps_content"
+            style="@style/contentTextStyle"
+            android:text="" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/output_cpu_title"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="20dp"
+        android:text="CPU"
+        app:layout_constraintLeft_toLeftOf="@id/output_fps_title"
+        app:layout_constraintTop_toBottomOf="@id/ll_text" />
+
+    <TextView
+        android:id="@+id/output_cpu_content"
+        style="@style/contentTextStyle"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_text" />
+
+    <Button
+        android:id="@+id/start_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/start_button_selector"
+        android:text="START"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/output_cpu_content" />
+</android.support.constraint.ConstraintLayout>
+</ScrollView>
