@@ -7,26 +7,36 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.net.Uri;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.Surface;
+import android.view.TextureView;
 import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.ethan.mediacodecdemo.R;
 import com.ethan.mediacodecdemo.util.PickUtils;
+import com.ethan.mediacodecdemo.util.VideoPlayer;
+import com.ethan.mediacodecdemo.widgt.AutoFitTextureView;
 
 import java.io.IOException;
 
 public class MediaExtractorActivity extends AppCompatActivity {
     private final String TAG = MediaExtractorActivity.class.getSimpleName();
-    private Button btn;
     private String[] permission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
     private final int REQUEST_FILE_CODE = 0x11;
     private TextView tvVideo,tvAudio;
+    private VideoPlayer videoPlayer = new VideoPlayer();
+    private AutoFitTextureView textureView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +45,13 @@ public class MediaExtractorActivity extends AppCompatActivity {
         if (!hasPermissionsGranted(permission)) {
             requestPermissions(permission, 1);
         }
-        btn = findViewById(R.id.btn_select);
+        textureView = findViewById(R.id.surface);
         tvAudio = findViewById(R.id.tv_audioTrack);
         tvVideo = findViewById(R.id.tv_videoTrack);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String path ="sdcard/小鬼当家.avi";
-//                printMediaCount(path);
-//                printAudioMeidaInfo(path);
-//                printVideoMeidaInfo(path);
-//            }
-//        });
     }
 
-    public void OpenFile(View view) {
+    public void OpenFile() {
+        videoPlayer.stop();
         // 指定类型
         String[] mimeTypes = {"*/*"};
         // String[] mimeTypes = {"application/octet-stream"}; // 指定bin类型
@@ -63,17 +65,27 @@ public class MediaExtractorActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "ChooseFile"), REQUEST_FILE_CODE);
     }
 
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        videoPlayer.stop();
+//    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_FILE_CODE) {
             assert data != null;
             Uri uri = data.getData();
             String path = PickUtils.getPath(MediaExtractorActivity.this, uri);
+            if (path == null){
+                printLog("path ==  null");
+                return;
+            }
+            printLog("path == " + path);
             printMediaCount(path);
             printAudioMeidaInfo(path);
             printVideoMeidaInfo(path);
-            printLog("path == " + path);
-
+            videoPlayer.stat(path,new Surface(textureView.getSurfaceTexture()));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -136,6 +148,9 @@ public class MediaExtractorActivity extends AppCompatActivity {
             MediaExtractor extractor = new MediaExtractor();//实例一个MediaExtractor
             extractor.setDataSource(path);
             MediaFormat mediaFormat = extractor.getTrackFormat(index);
+            int width = mediaFormat.getInteger(MediaFormat.KEY_WIDTH);
+            int height = mediaFormat.getInteger(MediaFormat.KEY_HEIGHT);
+            textureView.setAspectRatio(width,height);
             printLog("printVideoMeidaInfo " + mediaFormat.toString().replaceAll(",",",\n"));
             tvVideo.setText(mediaFormat.toString().replaceAll(",",",\n"));
         } catch (Exception e) {
@@ -167,4 +182,19 @@ public class MediaExtractorActivity extends AppCompatActivity {
         Log.d(TAG, log);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.select:
+                OpenFile();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

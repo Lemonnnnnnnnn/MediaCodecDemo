@@ -39,6 +39,8 @@ public class PickUtils {
 
                 if ("primary".equalsIgnoreCase(type)) {
                     return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }else {
+                    return "/storage/"+split[0]+"/"+split[1];
                 }
             }
             // DownloadsProvider
