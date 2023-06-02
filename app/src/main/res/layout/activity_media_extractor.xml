@@ -4,15 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:keepScreenOn="true"
     tools:context=".biz.MediaExtractorActivity">
+    <TextView
+        android:id="@+id/tv_filename"
+        android:textColor="@color/black"
+        android:textSize="8sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.ethan.mediacodecdemo.widgt.AutoFitTextureView
         android:id="@+id/surface"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_filename" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -31,12 +41,14 @@
             <TextView
                 android:id="@+id/tv_videoTrack"
                 android:layout_width="0dp"
+                style="@style/trackStyle"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_audioTrack"
                 android:layout_width="0dp"
+                style="@style/trackStyle"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
         </LinearLayout>

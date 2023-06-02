@@ -36,6 +36,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">10dp</item>
     </style>
+    <style name="trackStyle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
     <style name="spinnerDropdownStyle" parent="android:Widget.Spinner.DropDown">
         <!-- 分隔线颜色 -->

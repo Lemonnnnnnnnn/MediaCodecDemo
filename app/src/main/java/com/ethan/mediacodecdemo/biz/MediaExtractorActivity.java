@@ -34,7 +34,7 @@ public class MediaExtractorActivity extends AppCompatActivity {
     private final String TAG = MediaExtractorActivity.class.getSimpleName();
     private String[] permission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
     private final int REQUEST_FILE_CODE = 0x11;
-    private TextView tvVideo,tvAudio;
+    private TextView tvVideo,tvAudio,tvFileName;
     private VideoPlayer videoPlayer = new VideoPlayer();
     private AutoFitTextureView textureView;
 
@@ -48,6 +48,7 @@ public class MediaExtractorActivity extends AppCompatActivity {
         textureView = findViewById(R.id.surface);
         tvAudio = findViewById(R.id.tv_audioTrack);
         tvVideo = findViewById(R.id.tv_videoTrack);
+        tvFileName = findViewById(R.id.tv_filename);
     }
 
     public void OpenFile() {
@@ -73,9 +74,10 @@ public class MediaExtractorActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == REQUEST_FILE_CODE) {
-            assert data != null;
+        if (requestCode == REQUEST_FILE_CODE && data != null) {
+            textureView.setVisibility(View.VISIBLE);
             Uri uri = data.getData();
+            tvFileName.setText(PickUtils.getFileName(MediaExtractorActivity.this,uri));
             String path = PickUtils.getPath(MediaExtractorActivity.this, uri);
             if (path == null){
                 printLog("path ==  null");
@@ -142,6 +144,7 @@ public class MediaExtractorActivity extends AppCompatActivity {
     private void printVideoMeidaInfo(String path) {
         int index = getTrackIndex("video", path);
         if (index < 0) {
+            textureView.setVisibility(View.GONE);
             return;
         }
         try {
@@ -170,7 +173,12 @@ public class MediaExtractorActivity extends AppCompatActivity {
             extractor.setDataSource(path);
             MediaFormat mediaFormat = extractor.getTrackFormat(index);
             printLog("printAudioMeidaInfo " + mediaFormat.toString().replaceAll(",",",\n"));
-            tvAudio.setText(mediaFormat.toString().replaceAll(",",",\n"));
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    tvAudio.setText(mediaFormat.toString().replaceAll(",",",\n"));
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
